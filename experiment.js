@@ -35,66 +35,47 @@ var instructions = {
 };
 timeline.push(instructions);
 
-// test trials - long form (timeline function issues)
-var trial_1 = {
+//timeline variable function that isn't working :)
+var test_stimuli = [
+    { stimulus: 'img/c.png' },
+    { stimulus: `img/e.png` },
+    { stimulus: `img/p.png` },
+    { stimulus: `img/u.png` },
+    { stimulus: `img/l.png` },
+    { stimulus: `img/s.png` },
+];
+
+var trial_h = {
     type: jsPsychVisualSearchCircle,
-    stimuli: [`img/c.png`, `img/h.png`, `img/e.png`, `img/l.png`, `img/p.png`, `img/s.png`],
+    target: `img/h.png`,
+    foil: jsPsych.timelineVariable('stimulus'),
     fixation_image: `img/fixation.png`,
-    fixation_size: [35, 35],
     target_present_key: 'f',
     target_absent_key: 'j',
     target_present: true,
     post_trial_gap: 1000,
-};
-timeline.push(trial_1);
+    set_size: 5
+}
 
-var trial_2 = {
+var trial_u = {
     type: jsPsychVisualSearchCircle,
-    stimuli: [`img/c.png`, `img/l.png`, `img/e.png`, `img/u.png`, `img/s.png`, `img/p.png`],
+    target: `img/j.png`,
+    foil: jsPsych.timelineVariable('stimulus'),
     fixation_image: `img/fixation.png`,
-    fixation_size: [35, 35],
     target_present_key: 'j',
     target_absent_key: 'f',
     target_present: true,
     post_trial_gap: 1000,
-};
-timeline.push(trial_2);
+    set_size: 5
+}
 
-var trial_3 = {
-    type: jsPsychVisualSearchCircle,
-    stimuli: [`img/c.png`, `img/p.png`, `img/l.png`, `img/u.png`, `img/s.png`, `img/e.png`],
-    fixation_image: `img/fixation.png`,
-    fixation_size: [35, 35],
-    target_present_key: 'j',
-    target_absent_key: 'f',
-    target_present: true,
-    post_trial_gap: 1000,
+var trial_procedure = {
+    timeline: [trial_h, trial_u],
+    timeline_variables: test_stimuli,
+    randomize_order: true,
+    repetitions: 5
 };
-timeline.push(trial_3);
-
-var trial_4 = {
-    type: jsPsychVisualSearchCircle,
-    stimuli: [`img/s.png`, `img/e.png`, `img/l.png`, `img/c.png`, `img/h.png`, `img/p.png`],
-    fixation_image: `img/fixation.png`,
-    fixation_size: [35, 35],
-    target_present_key: 'f',
-    target_absent_key: 'j',
-    target_present: true,
-    post_trial_gap: 1000,
-};
-timeline.push(trial_4);
-
-var trial_5 = {
-    type: jsPsychVisualSearchCircle,
-    stimuli: [`img/p.png`, `img/s.png`, `img/e.png`, `img/c.png`, `img/l.png`, `img/h.png`],
-    fixation_image: `img/fixation.png`,
-    fixation_size: [35, 35],
-    target_present_key: 'f',
-    target_absent_key: 'j',
-    target_present: true,
-    post_trial_gap: 1000,
-};
-timeline.push(trial_5);
+timeline.push(trial_procedure);
 
 // debrief 
 var debrief = {
@@ -107,34 +88,4 @@ timeline.push(debrief);
 
 //start experiment 
 jsPsych.run(timeline);
-
-
-//timeline variable function that isn't working :)
-/* var test_stimuli = [
-    { stimulus: 'img/c.png' },
-    { stimulus: `img/e.png` },
-    { stimulus: `img/p.png` },
-    { stimulus: `img/u.png`, correct_response: 'j' },
-    { stimulus: `img/h.png`, correct_response: 'f' },
-    { stimulus: `img/l.png` },
-    { stimulus: `img/s.png` },
-];
-
-var trial = {
-    type: jsPsychVisualSearchCircle,
-    stimuli: jsPsych.timelineVariable('stimulus'),
-    choices: ['f', 'j'],
-}
-
-// TODO: set fixation cross in center
-{ stimulus: `img/fixation.png` }
-
-var trial_procedure = {
-    timeline: [trial, fixation],
-    timeline_variables: test_stimuli,
-    randomize_order: true,
-    repetitions: 5
-};
-timeline.push(trial_procedure);
- */
 
