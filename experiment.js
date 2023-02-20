@@ -46,28 +46,6 @@ var test_stimuli = [
     { stimulus: `img/h.png` },
 ];
 
-/* var trial_h = {
-    type: jsPsychVisualSearchCircle,
-    target: `img/h.png`,
-    foil: jsPsych.timelineVariable('stimulus'),
-    fixation_image: `img/fixation.png`,
-    target_present_key: 'f',
-    target_absent_key: 'j',
-    target_present: true,
-    set_size: 5
-}
-
-var trial_u = {
-    type: jsPsychVisualSearchCircle,
-    target: `img/j.png`,
-    foil: jsPsych.timelineVariable('stimulus'),
-    fixation_image: `img/fixation.png`,
-    target_present_key: 'j',
-    target_absent_key: 'f',
-    target_present: true,
-    set_size: 5
-}
- */
 var trial = {
     type: jsPsychVisualSearchCircle,
     stimuli: jsPsych.timelineVariable('stimulus'),
