@@ -38,20 +38,18 @@ timeline.push(instructions);
 //timeline variable function that isn't working :)
 var test_stimuli = [
     { stimulus: 'img/c.png' },
-    { stimulus: `img/e.png` },
-    { stimulus: `img/p.png` },
-    { stimulus: `img/l.png` },
-    { stimulus: `img/s.png` },
-    { stimulus: `img/u.png` },
-    { stimulus: `img/h.png` },
+    { stimulus: 'img/e.png' },
+    { stimulus: 'img/p.png' },
+    { stimulus: 'img/l.png' },
+    { stimulus: 'img/s.png' },
+    { stimulus: 'img/u.png' },
+    { stimulus: 'img/h.png' },
 ];
 
 var trial = {
     type: jsPsychVisualSearchCircle,
     stimuli: jsPsych.timelineVariable('stimulus'),
     fixation_image: `img/fixation.png`,
-    target_present_key: 'j',
-    target_absent_key: 'f',
     target_present: true,
     set_size: 5
 };
