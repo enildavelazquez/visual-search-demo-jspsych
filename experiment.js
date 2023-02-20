@@ -54,7 +54,7 @@ var trial = {
     target_absent_key: 'f',
     target_present: true,
     set_size: 5
-}
+};
 
 var trial_procedure = {
     timeline: [trial],
