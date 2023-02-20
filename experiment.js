@@ -40,12 +40,13 @@ var test_stimuli = [
     { stimulus: 'img/c.png' },
     { stimulus: `img/e.png` },
     { stimulus: `img/p.png` },
-    { stimulus: `img/u.png` },
     { stimulus: `img/l.png` },
     { stimulus: `img/s.png` },
+    { stimulus: `img/u.png` },
+    { stimulus: `img/h.png` },
 ];
 
-var trial_h = {
+/* var trial_h = {
     type: jsPsychVisualSearchCircle,
     target: `img/h.png`,
     foil: jsPsych.timelineVariable('stimulus'),
@@ -66,11 +67,21 @@ var trial_u = {
     target_present: true,
     set_size: 5
 }
+ */
+var trial = {
+    type: jsPsychVisualSearchCircle,
+    stimuli: jsPsych.timelineVariable('stimulus'),
+    fixation_image: `img/fixation.png`,
+    target_present_key: 'j',
+    target_absent_key: 'f',
+    target_present: true,
+    set_size: 5
+}
 
 var trial_procedure = {
-    timeline: [trial_h, trial_u],
+    timeline: [trial],
     timeline_variables: test_stimuli,
-    randomize_order: false,
+    randomize_order: true,
     repetitions: 5
 };
 timeline.push(trial_procedure);
