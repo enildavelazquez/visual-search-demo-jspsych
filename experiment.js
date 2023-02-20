@@ -12,7 +12,7 @@ var timeline = [];
 //preload
 var preload = {
     type: jsPsychPreload,
-    images: [`img/c.png`, `img/e.png`, `img/p.png`, `img/u.png`, `img/p.png`, `img/s.png`, `img/l.png`, `img/fixation.png`]
+    images: [`img/c.png`, `img/e.png`, `img/h.png`, `img/l.png`, `img/p.png`, `img/s.png`, `img/u.png`, `img/fixation.png`]
 };
 timeline.push(preload);
 
