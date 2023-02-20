@@ -53,7 +53,6 @@ var trial_h = {
     target_present_key: 'f',
     target_absent_key: 'j',
     target_present: true,
-    post_trial_gap: 1000,
     set_size: 5
 }
 
@@ -65,7 +64,6 @@ var trial_u = {
     target_present_key: 'j',
     target_absent_key: 'f',
     target_present: true,
-    post_trial_gap: 1000,
     set_size: 5
 }
 
