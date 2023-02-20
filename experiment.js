@@ -2,7 +2,8 @@
 var jsPsych = initJsPsych({
     on_finish: function () {
         jsPsych.data.displayData();
-    }
+    },
+    override_safe_mode: true,
 });
 
 // define empty timeline array 
@@ -117,7 +118,6 @@ jsPsych.run(timeline);
     { stimulus: `img/h.png`, correct_response: 'f' },
     { stimulus: `img/l.png` },
     { stimulus: `img/s.png` },
-    { stimulus: `img/fixation.png` },
 ];
 
 var trial = {
@@ -126,9 +126,11 @@ var trial = {
     choices: ['f', 'j'],
 }
 
+// TODO: set fixation cross in center
+{ stimulus: `img/fixation.png` }
 
 var trial_procedure = {
-    timeline: [trial],
+    timeline: [trial, fixation],
     timeline_variables: test_stimuli,
     randomize_order: true,
     repetitions: 5
