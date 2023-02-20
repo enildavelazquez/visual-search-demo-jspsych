@@ -70,7 +70,7 @@ var trial_u = {
 var trial_procedure = {
     timeline: [trial_h, trial_u],
     timeline_variables: test_stimuli,
-    randomize_order: true,
+    randomize_order: false,
     repetitions: 5
 };
 timeline.push(trial_procedure);
