@@ -1,22 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visual Search Demo</title>
-    <script src="https://unpkg.com/jspsych@7.3.1"></script>
-    <!--visual search circle plugin-->
-    <script src="https://unpkg.com/@jspsych/plugin-visual-search-circle@1.1.2"></script>
-    <script src="https://unpkg.com/@jspsych/plugin-preload@1.1.2"></script>
-    <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@1.1.2"></script>
-    <script src="experiment.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/jspsych@7.3.1/css/jspsych.css" type="text/css">
+    <title>EXPERIMENT | Context Lab</title>
+
+    <!-- needed so page does not zoom in case someone double taps -->
+    <meta name="viewport" content="user-scalable=no" />
+
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+
+    <!-- Load JsPsych from root folder (so that it is shared across tasks) -->
+    <script src="dist/jspsych.js"></script>
+    <script src="dist/plugin-preload.js"></script>
+    <script src="dist/plugin-instructions.js"></script>
+    <script src="dist/plugin-image-keyboard-response.js"></script>
+    <script src="dist/plugin-html-keyboard-response.js"></script>
+    <script src="dist/plugin-visual-search-circle.js"></script>
+    <link rel="stylesheet" href="dist/jspsych.css" />
+
+    <!-- Load API storage function + any others -->
+    <script src="https://api.contextlab.daytah.io/share/utils.js"></script>
 </head>
 
 <body>
-
+    <script src="task.js"></script>
 </body>
 
 </html>
