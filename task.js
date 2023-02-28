@@ -8,9 +8,9 @@ const TASK_VERSION = "0.1a";
 
 const generated_completion_code = Math.floor(Math.random() * 500) + 100;
 
-// ============================================================================
-// --- SPECIFY TASK PARAMETERS
-// ============================================================================
+// // ============================================================================
+// // --- SPECIFY TASK PARAMETERS
+// // ============================================================================
 
 var constants = {
     target_h_key: "f",
@@ -23,9 +23,9 @@ var constants = {
     n_blocks: 1,
 }
 
-// ============================================================================
-// --- DETERMINE USER PLATFORM
-// ============================================================================
+// // ============================================================================
+// // --- DETERMINE USER PLATFORM
+// // ============================================================================
 
 // t/f - whether participant is on a mobile platform or not
 const onMobile =
@@ -34,9 +34,9 @@ const onMobile =
     );
 document.body.className += onMobile ? "mobile" : "desktop";
 
-// ============================================================================
-// --- INITIALIZE JSPSYCH
-// ============================================================================
+// // ============================================================================
+// // --- INITIALIZE JSPSYCH
+// // ============================================================================
 
 const jsPsych = initJsPsych({
 
@@ -72,20 +72,20 @@ const jsPsych = initJsPsych({
     }
 });
 
-// ============================================================================
-// --- EXTRACT IDs from URL
-// ============================================================================
+// // ============================================================================
+// // --- EXTRACT IDs from URL
+// // ============================================================================
 
-// --- extract participant ID and other params from URL
+// // --- extract participant ID and other params from URL
 var participant_id = jsPsych.data.getURLVariable("PARTICIPANT_ID") || 7789;
 var study_id = jsPsych.data.getURLVariable("STUDY_ID") || 77897789;
 var session_id = jsPsych.data.getURLVariable("SESSION_ID") || 778977897789;
 DEBUG = parseInt(jsPsych.data.getURLVariable("DEBUG"));
 var session_uuid = create_UUID();
 
-// ============================================================================
-// --- TIMING PARAMETERS
-// ============================================================================
+// // ============================================================================
+// // --- TIMING PARAMETERS
+// // ============================================================================
 
 // --- Durations
 var postDur, fixationDur, word_dur;
@@ -117,11 +117,11 @@ console.log("Session ID: " + session_id);
 console.log("Session UUID: " + session_uuid);
 console.log("Timestamp Start: " + timestamp_start);
 
-// ============================================================================
-// --- SAVE DATA PROPERTIES TO JSPSYCH DATA COLLECTION
-// ============================================================================
+// // ============================================================================
+// // --- SAVE DATA PROPERTIES TO JSPSYCH DATA COLLECTION
+// // ============================================================================
 
-// --- save to JsPsych data file
+// // --- save to JsPsych data file
 jsPsych.data.addProperties({
     subject_id: participant_id,
     study_id: study_id,
@@ -145,9 +145,9 @@ jsPsych.data.addProperties({
     screen_height: screen.height,
 });
 
-// ============================================================================
-// --- SPECIFY INSTRUCTIONS
-// ============================================================================
+// // ============================================================================
+// // --- SPECIFY INSTRUCTIONS
+// // ============================================================================
 
 const instructions = {
     type: jsPsychInstructions,
@@ -171,9 +171,9 @@ const msg_exp_complete = {
     }
 };
 
-// ============================================================================
-// --- SPECIFY TASK PROCEDURE
-// ============================================================================
+// // ============================================================================
+// // --- SPECIFY TASK PROCEDURE
+// // ============================================================================
 
 //preload
 var preload = {
@@ -189,12 +189,12 @@ var fixation = {
 };
 
 
-// ============================================================================
-// --- SPECIFY EXPERIMENTAL PROCEDURE
-// ============================================================================
+// // ============================================================================
+// // --- SPECIFY EXPERIMENTAL PROCEDURE
+// // ============================================================================
 
-// CREATE FACTORIAL DESIGN
-// ------------------------------------------------------------
+// // CREATE FACTORIAL DESIGN
+// // ------------------------------------------------------------
 
 // degrees of eccentricity - radius of the circle
 var DIAMETER_CHOICES = [300, 450, 600];
@@ -206,34 +206,48 @@ var factor_levels = {
         ['img/c.png', 'img/e.png', 'img/l.png', 'img/p.png', 'img/s.png'],
         ['img/e.png', 'img/c.png', 'img/l.png', 'img/p.png', 'img/s.png'],
         ['img/e.png', 'img/c.png', 'img/l.png', 'img/s.png', 'img/p.png'],
-        ['img/e.png', 'img/l.png', 'img/c.png', 'img/s.png', 'img/p.png']]
+        ['img/e.png', 'img/l.png', 'img/c.png', 'img/s.png', 'img/p.png']
+    ]
 };
 
 // generate factorial design
-print("About to create factorial design");
+console.log("About to create factorial design");
 var full_design = jsPsych.randomization.factorial(factor_levels, 1);
-print(full_design);
+console.log(full_design);
+
+
 
 // test trials - long form (timeline function issues)
-// var trial_procedure = {
-//     type: jsPsychVisualSearchCircle,
-//     stimuli: [jsPsych.timelineVariable('targ_image'),jsPsych.timelineVariable('foil_images')],
-//     fixation_image: constants.fixation_image,
-//     fixation_size: [constants.fixation_size, constants.fixation_size],
-//     target_present_key: constants.target_h_key,
-//     target_absent_key: constants.target_h_key,
-//     target_present: true,
-//     post_trial_gap: constants.post_trial_gap,
-//     timeline_variables: full_design,
-//     sample: {type: 'with-replacement', size: constants.n_blocks},
-//     on_finish: function (data) {
-//         console.log("About to finish trial...")
-//         data.targ_image = data.targ_image;
-//         data.foil_images = data.foil_images;
-//         data.correct = (data.key_press == constants.target_h_keycode & data.targ_image == 'img/h.png') | 
-//                 (data.key_press == constants.target_u_keycode & data.targ_image == 'img/u.png');
-//       }
-// };
+var trial_procedure = {
+    type: jsPsychVisualSearchCircle,
+    // target: jsPsych.timelineVariable('targ_image'),
+    // stimuli: ['img/h.png', 'img/u.png', 'img/c.png', 'img/e.png', 'img/l.png', 'img/p.png', 'img/s.png'],
+    // foil: 'img/c.png',
+    // set_size: 6,
+    fixation_image: constants.fixation_image,
+    fixation_size: [constants.fixation_size, constants.fixation_size],
+    target_present_key: constants.target_h_key,
+    target_absent_key: constants.target_h_key,
+    target_present: true,
+    post_trial_gap: constants.post_trial_gap,
+    timeline_variables: full_design,
+    sample: {type: 'with-replacement', size: constants.n_blocks},
+    stimuli: function (data) {
+        console.log(jsPsych.timelineVariable('foil_images'));
+        console.log(jsPsych.timelineVariable('targ_image'));
+        var all_images = [jsPsych.timelineVariable('targ_image'), jsPsych.timelineVariable('foil_images')];
+        console.log("about to return all_images");
+        console.log(all_images);
+        return all_images;
+      },
+    // on_finish: function (data) {
+    //     console.log("About to finish trial...")
+    //     data.targ_image = data.targ_image;
+    //     data.foil_images = data.foil_images;
+    //     data.correct = (data.key_press == constants.target_h_keycode & data.targ_image == 'img/h.png') | 
+    //             (data.key_press == constants.target_u_keycode & data.targ_image == 'img/u.png');
+    //   }
+};
 
 // ============================================================================
 // --- SPECIFY SEQUENCE AND RUN TIMELINE
@@ -243,7 +257,7 @@ print(full_design);
 var tl = [
     preload,
     instructions,
-    //trial_procedure,
+    trial_procedure,
     msg_exp_complete
 ];
 
